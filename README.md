@@ -6,4 +6,5 @@ This repository will contain all my public projects for business and academic pu
 
 # Projects
 
-- [MarketPlace EOI: Small E-Commerce](www.google.it). (Professional Course Project) 
+- [MarketPlace EOI: Small E-Commerce](https://marketplace-eoi-g2.web.app/). (Professional Course Project)
+- [CalculatorApp]()
