@@ -1,0 +1,126 @@
+<div class="p-0" id="calculatorContainer">
+  <div class="d-flex justify-content-between">
+    <h2 id="title">Calculator App</h2>
+    <!-- <div class="d-flex justify-content-between align-items-center">
+      <div>THEME</div>
+      <div class="ms-3 flex flex-column align-items-center">
+        <div class="d-flex justify-content-center">
+          <div class="me-2">1</div>
+          <div class="me-2">2</div>
+          <div>3</div>
+        </div>
+        <label id="toggle" class="d-flex justify-content-center">
+          <label id="slider" for="toggle">
+            <input type="checkbox" name="toggle" id="toggle" />
+          </label>
+        </label>
+      </div>
+    </div> -->
+  </div>
+  <div
+    class="mt-5 d-flex justify-content-end align-items-center rounded"
+    id="calculatorScreen"
+  >
+    <div>
+      <p class="me-4" id="screenNumbers">{{ calculatorScreen }}</p>
+    </div>
+  </div>
+
+  <div
+    id="keysContainer"
+    class="d-flex mt-4 flex-wrap justify-content-between p-3 rounded"
+  >
+    <div>
+      <button (click)="insertValue('7')" class="btn btn-light mx-2 mt-3">
+        7
+      </button>
+    </div>
+    <div>
+      <button (click)="insertValue('8')" class="btn btn-light mx-2 mt-3">
+        8
+      </button>
+    </div>
+    <div>
+      <button (click)="insertValue('9')" class="btn btn-light mx-2 mt-3">
+        9
+      </button>
+    </div>
+    <div>
+      <button id="delButton" (click)="del()" class="btn btn-primary mx-2 mt-3">
+        DEL
+      </button>
+    </div>
+    <div>
+      <button (click)="insertValue('4')" class="btn btn-light mx-2 mt-3">
+        4
+      </button>
+    </div>
+    <div>
+      <button (click)="insertValue('5')" class="btn btn-light mx-2 mt-3">
+        5
+      </button>
+    </div>
+    <div>
+      <button (click)="insertValue('6')" class="btn btn-light mx-2 mt-3">
+        6
+      </button>
+    </div>
+    <div>
+      <button (click)="sum()" class="btn btn-light mx-2 mt-3">+</button>
+    </div>
+    <div>
+      <button (click)="insertValue('1')" class="btn btn-light mx-2 mt-3">
+        1
+      </button>
+    </div>
+    <div>
+      <button (click)="insertValue('2')" class="btn btn-light mx-2 mt-3">
+        2
+      </button>
+    </div>
+    <div>
+      <button (click)="insertValue('3')" class="btn btn-light mx-2 mt-3">
+        3
+      </button>
+    </div>
+    <div>
+      <button (click)="subtraction()" class="btn btn-light mx-2 mt-3">-</button>
+    </div>
+    <div>
+      <button (click)="insertValue('.')" class="btn btn-light mx-2 mt-3">
+        .
+      </button>
+    </div>
+    <div>
+      <button (click)="insertValue('0')" class="btn btn-light mx-2 mt-3">
+        0
+      </button>
+    </div>
+    <div>
+      <button (click)="division()" class="btn btn-light mx-2 mt-3">/</button>
+    </div>
+    <div>
+      <button (click)="multiplication()" class="btn btn-light mx-2 mt-3">
+        X
+      </button>
+    </div>
+    <div class="mx-auto">
+      <button
+        (click)="reset()"
+        id="resetButton"
+        class="btn btn-primary mx-2 mt-3"
+      >
+        RESET
+      </button>
+    </div>
+    <div class="mx-auto">
+      <button
+        (click)="equal()"
+        id="equalButton"
+        class="btn btn-danger mx-2 mt-3"
+      >
+        =
+      </button>
+    </div>
+  </div>
+</div>
