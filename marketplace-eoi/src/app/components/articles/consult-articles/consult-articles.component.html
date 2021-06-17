@@ -1,0 +1,129 @@
+<div id="divConsultar">
+  <div [formGroup]="form" *ngIf="!actualizando" class="form-group">
+    <label for="usuario">Buscar Articulo</label>
+    <div class="form-inline">
+      <input
+        placeholder="Nombre Articulo"
+        (keydown)="buscarArticulo()"
+        formControlName="buscarArticulo"
+        type="text"
+        name="articulo"
+        id="articulo"
+        class="form-control col-11"
+      />
+      <button (click)="navigateArticle()" class="btn btn-danger ml-2">
+        Salir
+      </button>
+    </div>
+  </div>
+  <div
+    *ngIf="alertMostrado === true && !actualizando"
+    class="alert alert-danger mt-3"
+    role="alert"
+  >
+    Articulo eliminado correctamente!
+  </div>
+
+  <div *ngIf="!actualizando" class="row d-flex wrap">
+    <div
+      class="
+        col-md-4
+        p-3
+        border
+        rounded
+        d-flex
+        align-items-center
+        justify-content-center
+        flex-column
+      "
+      *ngFor="let article of articles"
+      id="article"
+    >
+      <img
+        src="../../../assets/images/item-shop.jpg"
+        alt="user"
+        style="width: 200px; height: 200px"
+      />
+      <div>
+        <h3>{{ article.name }}</h3>
+        <p>Stock: {{ article.stock }}</p>
+        <p>Precio: {{ article.price | currency: "EUR" }}</p>
+        <p>Pedido {{ article.vecesPedido }} veces</p>
+        <button
+          (click)="actualizandoArticulo(article)"
+          class="btn btn-success mr-2"
+        >
+          Actualizar
+        </button>
+        <button (click)="borrarArticulo(article)" class="btn btn-danger">
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="actualizando" class="col mt-5">
+    <div *ngIf="actualizando" class="col">
+      <form id="newArticleForm" [formGroup]="form" class="border rounded p-4">
+        <h3 class="mb-3">Actualizar Articulo</h3>
+        <div class="form-row">
+          <div class="col-6">
+            <div class="form-group">
+              <label for="name">Nombre Articulo</label>
+              <input
+                placeholder="Nombre"
+                formControlName="nombre"
+                type="text"
+                class="form-control"
+                id="name"
+              />
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <label for="price">Precio</label>
+              <input
+                placeholder="Precio"
+                formControlName="precio"
+                type="number"
+                class="form-control"
+                id="price"
+              />
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <label for="stock">Stock</label>
+              <input
+                placeholder="Stock"
+                formControlName="stock"
+                type="number"
+                class="form-control"
+                id="stock"
+              />
+            </div>
+          </div>
+        </div>
+        <button (click)="actualizarArticulo()" class="btn btn-primary">
+          Actualizar
+        </button>
+        <button (click)="this.actualizando = false" class="btn btn-danger ml-2">
+          Salir
+        </button>
+      </form>
+      <div
+        *ngIf="alertMostrado === true"
+        class="alert alert-success mt-3"
+        role="alert"
+      >
+        Articulo actualizado correctamente!
+      </div>
+      <div
+        *ngIf="alertMostradoError === true"
+        class="alert alert-danger mt-3"
+        role="alert"
+      >
+        Formulario no válido!
+      </div>
+    </div>
+  </div>
+</div>

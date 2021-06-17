@@ -1,0 +1,53 @@
+<mat-dialog-content>
+  <h4>Back this project</h4>
+  <p>
+    Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the
+    world?
+  </p>
+  <div
+    *ngFor="let reward of rewards"
+    class="reward border rounded d-flex flex-column p-4 mt-3"
+  >
+    <mat-radio-button [value]="[reward.position]" (click)="openPledge(reward)"
+      ><h5>{{ reward.title }}</h5>
+      <span *ngIf="reward.quantity !== null" class="pledges"
+        >Pledge ${{ reward.pledge }} or more</span
+      >
+    </mat-radio-button>
+    <p class="mt-3">
+      {{ reward.description }}
+    </p>
+    <div class="d-flex">
+      <h4 *ngIf="reward.quantity !== null">{{ reward.quantity }}</h4>
+      <span *ngIf="reward.quantity !== null">left</span>
+    </div>
+    <div
+      *ngIf="pledgeIsShown(reward)"
+      class="border-top d-flex flex-column align-items-center pledge pt-3 mt-2"
+    >
+      <p *ngIf="reward.quantity !== null">Enter your pledge</p>
+      <div id="this" class="d-flex justify-content-around">
+        <div
+          *ngIf="reward.quantity !== null"
+          class="border d-flex justify-content-around align-items-center me-3"
+          id="moneyInput"
+        >
+          <p *ngIf="reward.quantity !== null" class="ms-1" style="margin: 0">
+            $
+          </p>
+          <input
+            *ngIf="reward.quantity !== null"
+            class="form-control"
+            [(ngModel)]="this.rewardAmount"
+            id="pledge"
+            type="number"
+            value="{{ reward.pledge }}"
+          />
+        </div>
+        <button (click)="backProject()" class="greenButtons" mat-button>
+          Continue
+        </button>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>

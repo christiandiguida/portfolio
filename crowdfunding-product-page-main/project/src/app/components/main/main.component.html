@@ -1,0 +1,116 @@
+<!-- ***************************** Menu ***************************** -->
+
+<div id="headerSection">
+  <mat-toolbar>
+    <span>crowdfund</span>
+    <button
+      (click)="changeMenuIcon()"
+      class="ms-auto"
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+    >
+      <mat-icon id="menuIcon">menu</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-menu (closed)="restoreMenuIcon()" style="height: 500px" #menu="matMenu">
+    <button class="border-bottom" mat-menu-item>
+      <span>About</span>
+    </button>
+    <button class="border-bottom" mat-menu-item>
+      <span>Discover</span>
+    </button>
+    <button mat-menu-item>
+      <span>Get Started</span>
+    </button>
+  </mat-menu>
+</div>
+
+<!-- ***************************** backThisProject Div ***************************** -->
+<div
+  id="backThisProject"
+  class="section border rounded d-flex flex-column align-items-center"
+>
+  <svg width="56" height="56" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" fill-rule="evenodd">
+      <circle fill="#000" cx="28" cy="28" r="28" />
+      <g fill-rule="nonzero">
+        <path
+          d="M15.565 28.565a1.93 1.93 0 012.606-.113l.122.113 10.142 10.142a1.93 1.93 0 01-2.606 2.84l-.122-.112-10.142-10.142a1.93 1.93 0 010-2.728z"
+          fill="#444"
+        />
+        <path
+          d="M36.19 17.48c1.006-.996 2.706-.34 2.805 1.026l.005.126v10.736c0 .9-.737 1.629-1.646 1.629a1.64 1.64 0 01-1.642-1.507l-.005-.122v-6.805l-8.043 7.957c-1.006.996-2.707.34-2.806-1.026l-.004-.126v-6.805L16.81 30.52a1.66 1.66 0 01-2.224.095l-.105-.095a1.616 1.616 0 01-.096-2.2l.096-.103L25.336 17.48c1.006-.996 2.707-.34 2.806 1.026l.004.126v6.804l8.043-7.956z"
+          fill="#FFF"
+        />
+      </g>
+    </g>
+  </svg>
+  <div>
+    <h2>Mastercraft Bamboo Monitor Riser</h2>
+    <p>
+      A beautifully handcrafted monitor stand to reduce neck and eye strain.
+    </p>
+    <div class="d-flex justify-content-center">
+      <button (click)="openDialog()" class="greenButtons" mat-button>
+        Back this project
+      </button>
+      <button id="bookmarkIconButton" mat-mini-fab>
+        <mat-icon id="bookmarkIcon">bookmark</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+<!-- ***************************** statistics Div ***************************** -->
+<div
+  class="section mt-3 border rounded d-flex flex-column align-items-center"
+  id="statistics"
+>
+  <h3>{{ getProject.totalBacked | currency: "USD":"symbol":"1.0-0" }}</h3>
+  <p>of {{ getProject.total | currency: "USD":"symbol":"1.0-0" }}</p>
+  <hr />
+  <h3>{{ getProject.backers }}</h3>
+  <p>total backers</p>
+  <hr />
+  <h3>{{ getProject.daysLeft }}</h3>
+  <p>days left</p>
+  <mat-progress-bar
+    value="{{ getProject.totalBacked / 1000 }}"
+    mode="determinate"
+  ></mat-progress-bar>
+</div>
+<!-- ***************************** support Div ***************************** -->
+<div
+  class="section mt-3 pt-4 border rounded d-flex flex-column align-items-center"
+  id="support"
+>
+  <h3>About this project</h3>
+  <p>
+    The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that
+    elevates your screen to a more comfortable viewing height. Placing your
+    monitor at eye level has the potential to improve your posture and make you
+    more comfortable while at work, helping you stay focused on the task at
+    hand.
+  </p>
+  <p>
+    Featuring artisan craftsmanship, the simplicity of design creates extra desk
+    space below your computer to allow notepads, pens, and USB sticks to be
+    stored under the stand.
+  </p>
+  <div
+    *ngFor="let reward of rewards"
+    class="reward border rounded d-flex flex-column p-4 mt-3"
+  >
+    <h5>{{ reward.title }}</h5>
+    <p *ngIf="reward.quantity !== null">Pledge ${{ reward.pledge }} or more</p>
+    <p>{{ reward.description }}</p>
+    <div class="d-flex">
+      <h4 *ngIf="reward.quantity !== null">{{ reward.quantity }}</h4>
+      <span *ngIf="reward.quantity !== null">left</span>
+    </div>
+    <br />
+    <button (click)="openDialog(reward)" class="greenButtons" mat-button>
+      Select Reward
+    </button>
+  </div>
+</div>

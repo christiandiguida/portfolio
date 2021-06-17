@@ -1,0 +1,61 @@
+<div
+  *ngIf="alertMostradoError === true"
+  class="alert alert-danger mt-3"
+  role="alert"
+>
+  Formulario no válido!
+</div>
+<div id="divRegister" class="col">
+  <form id="newArticleForm" [formGroup]="form" class="border rounded p-4">
+    <h3 class="mb-3">Crear Nuevo Articulo</h3>
+    <div class="form-row">
+      <div class="col-6">
+        <div class="form-group">
+          <label for="articulo">Nombre Articulo</label>
+          <input
+            placeholder="Nombre"
+            formControlName="nombre"
+            type="text"
+            class="form-control"
+            id="articulo"
+          />
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+          <label for="price">Precio</label>
+          <input
+            placeholder="Precio"
+            formControlName="precio"
+            type="number"
+            class="form-control"
+            id="price"
+          />
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+          <label for="stock">Stock</label>
+          <input
+            placeholder="Stock"
+            formControlName="stock"
+            type="number"
+            class="form-control"
+            id="stock"
+          />
+        </div>
+      </div>
+    </div>
+    <button (click)="registro()" class="btn btn-primary">Registrar</button>
+    <button (click)="navigateArticle()" class="btn btn-danger ml-2">
+      Salir
+    </button>
+  </form>
+  <div
+    *ngIf="alertMostrado === true"
+    class="alert alert-success mt-3"
+    role="alert"
+  >
+    Articulo creado correctamente!
+  </div>
+</div>

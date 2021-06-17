@@ -1,0 +1,133 @@
+<div id="divConsultar">
+  <div [formGroup]="form" *ngIf="!actualizando" class="form-group">
+    <label for="usuario">Buscar Usuario</label>
+    <div class="form-inline">
+      <input
+        (keydown)="buscarUsuario()"
+        placeholder="Nombre Usuario"
+        formControlName="buscarUsuario"
+        type="text"
+        name="usuario"
+        id="usuario"
+        class="form-control col-11"
+      />
+      <button (click)="navigateUser()" class="btn btn-danger ml-2">
+        Salir
+      </button>
+    </div>
+  </div>
+
+  <div
+    *ngIf="alertMostrado === true && !actualizando"
+    class="alert alert-danger mt-3"
+    role="alert"
+  >
+    Usuario eliminado correctamente!
+  </div>
+  <div
+    *ngIf="alertLogUserMostrado === true && !actualizando"
+    class="alert alert-danger mt-3"
+    role="alert"
+  >
+    No puedes eliminar un LoggedUser!
+  </div>
+  <div *ngIf="!actualizando" class="row d-flex wrap">
+    <div
+      class="
+        col-md-4
+        p-3
+        border
+        rounded
+        d-flex
+        align-items-center
+        justify-content-center
+        flex-column
+      "
+      *ngFor="let user of users; let i = index"
+      id="user"
+    >
+      <img
+        src="../../../assets/images/man.png"
+        alt="user"
+        style="width: 200px; height: 200px"
+      />
+      <div>
+        <h3>{{ user.name }}</h3>
+        <p>Pedidos: {{ user.pedidos.length }}</p>
+        <div *ngIf="user.pedidos.length !== 0; else elseTemplate">
+          <p>Ultimos 3 Pedidos:</p>
+          <ul *ngFor="let pedido of user.pedidos; let index = index">
+            <li
+              *ngIf="
+                index == user.pedidos.length - 1 ||
+                index == user.pedidos.length - 2 ||
+                index == user.pedidos.length - 3
+              "
+            >
+              {{ pedido.name }}
+            </li>
+          </ul>
+        </div>
+        <ng-template #elseTemplate>
+          <p>Ningun Pedido</p>
+        </ng-template>
+
+        <button
+          (click)="actualizandoUsuario(user)"
+          class="btn btn-success mr-2"
+        >
+          Actualizar
+        </button>
+        <button (click)="borrarUsuario(user)" class="btn btn-danger">
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="actualizando" class="col mt-5">
+    <form id="newUserForm" [formGroup]="form" class="border rounded p-4">
+      <h3 class="mb-3">Actualizar Usuario</h3>
+      <div class="form-group">
+        <label for="usuario">Usuario</label>
+        <input
+          placeholder="Nombre"
+          formControlName="usuario"
+          type="email"
+          class="form-control"
+          id="usuario"
+          aria-describedby="emailHelp"
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          placeholder="Password"
+          formControlName="password"
+          type="password"
+          class="form-control"
+          id="password"
+        />
+      </div>
+      <button (click)="actualizarUsuario()" class="btn btn-primary">
+        Actualizar
+      </button>
+      <button (click)="this.actualizando = false" class="btn btn-danger ml-2">
+        Salir
+      </button>
+    </form>
+  </div>
+  <div
+    *ngIf="alertActualizarMostrado === true"
+    class="alert alert-success mt-3"
+    role="alert"
+  >
+    Usuario actualizado correctamente!
+  </div>
+  <div
+    *ngIf="alertMostradoError === true"
+    class="alert alert-danger mt-3"
+    role="alert"
+  >
+    Formulario no válido!
+  </div>
+</div>

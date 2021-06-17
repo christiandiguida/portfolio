@@ -1,0 +1,34 @@
+.mat-dialog-content {
+  max-height: initial;
+}
+.mat-dialog-content p {
+  color: #a7a7a7;
+  max-height: initial;
+}
+#this {
+  width: 80vw;
+}
+
+.greenButtons {
+  border-radius: 100px;
+  color: white;
+  width: 30%;
+  background-color: hsl(176, 50%, 47%);
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+#moneyInput {
+  height: 10%;
+  border-radius: 100px;
+  width: 30%;
+  color: #a7a7a7;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+#moneyInput input {
+  width: 70%;
+  border: none;
+}
+.pledges {
+  color: hsl(176, 50%, 47%);
+}

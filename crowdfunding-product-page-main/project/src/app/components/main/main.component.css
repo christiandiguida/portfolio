@@ -1,0 +1,94 @@
+/* ***************************** General *****************************  */
+.section {
+  background-color: white;
+  padding: 25px;
+  padding-top: 0;
+  position: relative;
+  top: -50px;
+  margin: auto;
+  width: 90%;
+}
+.greenButtons:nth-child(1) {
+  width: 70%;
+}
+.greenButtons {
+  border-radius: 100px;
+  color: white;
+  width: 200px;
+  background-color: hsl(176, 50%, 47%);
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+/* ***************************** Menu *****************************  */
+
+#headerSection {
+  height: 300px;
+  background-position: right 50% bottom 0;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-image: url("../../../assets/images/image-hero-mobile.jpg");
+}
+.mat-toolbar {
+  color: white;
+  position: absolute !important;
+  background-color: transparent;
+}
+
+::ng-deep.mat-menu-panel {
+  max-width: none !important;
+  width: 100vw !important;
+  margin-inline: 30px;
+}
+::ng-deep.cdk-overlay-connected-position-bounding-box {
+  background-color: rgba(0, 0, 0, 0.418) !important;
+}
+/* ***************************** backThisProject Div ***************************** */
+
+#backThisProject {
+  text-align: center;
+}
+#backThisProject p {
+  color: #a7a7a7;
+}
+
+#backThisProject svg {
+  position: relative;
+  top: -30px;
+}
+#bookmarkIconButton {
+  background-color: hsla(0, 0%, 0%, 0.87) !important;
+  width: 60px;
+  height: 60px;
+  margin-left: 5%;
+}
+#bookmarkIcon {
+  transform: scale(0.9);
+  color: hsla(0, 0%, 87%, 0.836);
+}
+/* ***************************** statistics Div ***************************** */
+#statistics {
+  padding-top: 25px;
+  text-align: center;
+}
+#statistics hr {
+  width: 40%;
+  color: #a7a7a7;
+}
+::ng-deep .mat-progress-bar-buffer {
+  height: 30px;
+  background-color: #e2e2e2;
+}
+::ng-deep .mat-progress-bar-fill::after {
+  background-color: hsl(176, 50%, 47%);
+}
+mat-progress-bar {
+  height: 15px !important;
+  border-radius: 100px;
+}
+/* ***************************** support Div ***************************** */
+#support span {
+  margin-top: 2px;
+  margin-left: 10px;
+  color: #a7a7a7;
+}

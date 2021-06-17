@@ -1,0 +1,129 @@
+<div>
+  <form [formGroup]="form" class="border rounded p-4">
+    <h3 class="mb-3">Crear Nuevo Pedido</h3>
+    <div class="form-row">
+      <div class="form-group col-6">
+        <label for="pedido">Nombre Pedido</label>
+        <input
+          placeholder="Nombre"
+          formControlName="nombre"
+          type="text"
+          class="form-control"
+          id="pedido"
+        />
+      </div>
+      <div class="form-group col-6">
+        <label for="date">Fecha</label>
+        <input
+          formControlName="fecha"
+          type="date"
+          class="form-control"
+          id="date"
+        />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-12">
+        <label for="search">Buscar Articulo</label>
+        <div class="form-inline">
+          <input
+            (keydown)="buscarArticulo()"
+            placeholder="Nombre Articulo"
+            formControlName="buscarArticulo"
+            type="text"
+            name="articulo"
+            id="search"
+            class="form-control col-6"
+          />
+          <button (click)="guardarPedido()" class="btn btn-primary ml-2">
+            Guardar Pedido
+          </button>
+          <button (click)="navigateOrder()" class="btn btn-danger ml-2">
+            Salir
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div
+    *ngIf="alertMostrado === true"
+    class="alert alert-success mt-3"
+    role="alert"
+  >
+    Pedido creado correctamente!
+  </div>
+  <div
+    *ngIf="alertMostradoError === true"
+    class="alert alert-danger mt-3"
+    role="alert"
+  >
+    Formulario no válido!
+  </div>
+  <div
+    *ngIf="alertMostraCantidad === true"
+    class="alert alert-danger mt-3"
+    role="alert"
+  >
+    La cantidad solicitada no está disponible!
+  </div>
+  <div
+    *ngIf="alertMostraCestaVacia === true"
+    class="alert alert-danger mt-3"
+    role="alert"
+  >
+    La cesta está vacía!
+  </div>
+  <ul class="list-group">
+    <div class="row">
+      <li *ngFor="let article of addedArticulos" class="col-3 list-group-item">
+        <p>{{ article.nombre }}</p>
+        <p>Precio Total: {{ article.totalPrice | currency: "EUR" }}</p>
+        <p>Unidades: {{ article.unidades }}</p>
+        <button (click)="eliminarAddedArticulo(article)" class="btn btn-danger">
+          Eliminar
+        </button>
+      </li>
+    </div>
+  </ul>
+
+  <div class="row d-flex wrap">
+    <div
+      class="
+        col-md-4
+        p-3
+        border
+        rounded
+        d-flex
+        align-items-center
+        justify-content-center
+        flex-column
+      "
+      *ngFor="let article of articles"
+    >
+      <img
+        src="../../../assets/images/item-shop.jpg"
+        alt="user"
+        style="width: 200px; height: 200px"
+      />
+      <div>
+        <h3>{{ article.name }}</h3>
+        <p>Stock: {{ article.stock }}</p>
+        <p>Precio: {{ article.price | currency: "EUR" }}</p>
+      </div>
+      <div [formGroup]="form" class="form-group">
+        <label for="inputState">Cantidad</label>
+        <input
+          formControlName="cantidad"
+          type="number"
+          name="articulo"
+          id="inputState"
+          class="form-control"
+        />
+      </div>
+
+      <button (click)="addArticulo(article)" class="btn btn-success mr-2">
+        Añadir
+      </button>
+    </div>
+  </div>
+</div>
