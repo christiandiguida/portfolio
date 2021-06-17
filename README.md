@@ -6,7 +6,7 @@ This repository will contain all my public projects for business and academic pu
 
 # Projects
 
-- [MarketPlace EOI: Small E-Commerce](https://marketplace-eoi-g2.web.app/). (Professional Course Project)
+- [MarketPlace EOI: Small E-Commerce](https://marketplace-eoi-g2.web.app/). (Professional Course Project) - User: admin, Password:admin
 - [CalculatorApp](https://calculatorapp-72c03.web.app/). By [FrontEndMentor](https://www.frontendmentor.io/)
 - [Social Proof Section](https://frontmentor-socialproofsection.web.app/). By [FrontEndMentor](https://www.frontendmentor.io/)
 - [Crowfunding Page](https://frontmentor-crowfundingpage.web.app/). By [FrontEndMentor](https://www.frontendmentor.io/)
